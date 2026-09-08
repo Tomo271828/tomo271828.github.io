@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="tomoが制作したゲームを紹介します。">
+    <title>Games | tomo Portfolio</title>
+    <link rel="stylesheet" href="../style.css?v=20260907-2">
+    <link rel="stylesheet" href="games.css?v=20260907-6">
+    <script src="games-data.js?v=20260907-3" defer></script>
+    <script src="game-order.js?v=20260907-6" defer></script>
+    <script src="games.js?v=20260907-6" defer></script>
+</head>
+<body class="subpage subpage--games">
+    <header class="subpage__header">
+        <a class="site-name" href="../">TOMO PORTFOLIO</a>
+        <a class="back-link" href="../">← トップへ戻る</a>
+    </header>
+    <main class="games-main">
+        <header class="games-heading">
+            <p class="eyebrow">01 / GAMES</p>
+            <h1>Games</h1>
+        </header>
+        <div class="games-controls" role="group" aria-label="ゲームの並べ替えと分類">
+            <button type="button" id="games-tag-toggle" aria-expanded="false" aria-controls="games-tag-panel">タグ絞り込み</button>
+            <button type="button" id="games-sort" aria-label="開発時期：新しい順。クリックで古い順に変更">開発時期↓</button>
+            <button type="button" data-group="engine" aria-pressed="false">利用エンジン</button>
+            <button type="button" data-group="team" aria-pressed="false">開発人数</button>
+        </div>
+        <div id="games-tag-panel" class="games-tag-panel" hidden>
+            <fieldset class="games-tag-mode">
+                <legend>タグの検索条件</legend>
+                <label><input type="radio" name="tag-mode" value="and" checked> AND（すべて含む）</label>
+                <label><input type="radio" name="tag-mode" value="or"> OR（いずれかを含む）</label>
+            </fieldset>
+            <div id="games-tag-options" role="group" aria-label="タグを選択"></div>
+            <button type="button" id="games-tag-clear">選択を解除</button>
+        </div>
+        <p id="games-tag-status" class="games-tag-status" role="status"></p>
+        <div id="games-grid" aria-label="ゲーム一覧"></div>
+        <p class="games-empty" id="games-empty" hidden>ゲームは準備中です。</p>
+        <noscript>ゲーム一覧を見るにはJavaScriptを有効にしてください。</noscript>
+    </main>
+    <dialog class="game-dialog" id="game-dialog" aria-labelledby="game-title">
+        <button class="dialog-close" type="button" autofocus>閉じる <span aria-hidden="true">×</span></button>
+        <div class="game-dialog-layout">
+            <div class="game-visual">
+                <div id="game-image"></div>
+                <ul class="game-tags" id="game-tags" aria-label="タグ"></ul>
+                <dl class="game-meta">
+                    <div>
+                        <dt>利用エンジン</dt>
+                        <dd id="game-engine"></dd>
+                    </div>
+                    <div>
+                        <dt>開発人数</dt>
+                        <dd id="game-team-size"></dd>
+                    </div>
+                    <div>
+                        <dt>開発時期</dt>
+                        <dd id="game-development-period"></dd>
+                    </div>
+                </dl>
+            </div>
+            <div class="game-detail">
+                <h2 id="game-title"></h2>
+                <p class="game-description" id="game-description" tabindex="0" role="tabpanel" aria-labelledby="game-tab-introduction" aria-live="polite"></p>
+                <div class="game-description-tabs" role="tablist" aria-label="説明の切り替え">
+                    <button type="button" id="game-tab-introduction" role="tab" aria-selected="true" aria-controls="game-description" data-description="introductionPath">ゲーム紹介</button>
+                    <button type="button" id="game-tab-details" role="tab" aria-selected="false" aria-controls="game-description" tabindex="-1" data-description="detailsPath">詳細</button>
+                </div>
+            </div>
+        </div>
+    </dialog>
+</body>
+</html>

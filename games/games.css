@@ -12,7 +12,14 @@
 .games-controls button:hover { border-color: var(--games); }
 .games-controls button[aria-pressed="true"] { background: var(--games); color: #10180c; }
 .games-controls button:focus-visible { outline: 2px solid var(--games); outline-offset: 3px; }
-.games-tag-panel { margin: -16px 0 24px; padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: #11151d; }
+.games-tag-reveal { display: grid; grid-template-rows: 0fr; visibility: hidden; transition: grid-template-rows 320ms ease, visibility 0s 320ms; }
+.games-tag-reveal.is-open { grid-template-rows: 1fr; visibility: visible; transition-delay: 0s; }
+.games-tag-clip { min-height: 0; overflow: hidden; }
+.games-tag-panel { margin: 0 0 24px; padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: #11151d; opacity: 0; transform: translateY(-12px); transition: opacity 240ms ease, transform 320ms ease; }
+.games-tag-reveal.is-open .games-tag-panel { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+    .games-tag-reveal, .games-tag-panel { transition: none; }
+}
 .games-tag-panel p { margin: 0 0 16px; color: var(--muted); }
 #games-tag-options { display: flex; flex-wrap: wrap; gap: 12px; }
 #games-tag-options label { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px; cursor: pointer; overflow-wrap: anywhere; }
@@ -30,10 +37,12 @@
 #games-grid > section + section { margin-top: 40px; }
 .games-group-heading { display: flex; align-items: center; gap: 20px; margin: 0 0 24px; font-size: 1.4rem; overflow-wrap: anywhere; }
 .games-group-heading::after { content: ""; flex: 1; min-width: 24px; border-top: 1px solid var(--line); }
+/* 外側のフォーカス枠（3px + offset 4px）を切り取らない余白。カード位置は維持する。 */
+#games-grid { overflow-x: clip; margin-inline: -8px; padding-inline: 8px; }
 
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 24px;
     list-style: none;
     margin: 0;
@@ -108,8 +117,35 @@
     color: var(--text);
     box-shadow: 0 24px 100px #0009;
 }
-.game-dialog[open] { display: flex; flex-direction: column; }
+.game-dialog[open] {
+    display: flex;
+    flex-direction: column;
+    animation: game-dialog-enter 320ms ease-out;
+}
 .game-dialog::backdrop { background: #03060bdd; }
+.game-dialog[open]::backdrop { animation: game-backdrop-enter 320ms ease-out; }
+.game-dialog[open].is-closing { animation: game-dialog-exit 320ms ease-in forwards; }
+.game-dialog[open].is-closing::backdrop { animation: game-backdrop-exit 320ms ease-in forwards; }
+@keyframes game-dialog-exit {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(24px); }
+}
+@keyframes game-backdrop-exit {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@keyframes game-dialog-enter {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes game-backdrop-enter {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .game-dialog[open], .game-dialog[open]::backdrop,
+    .game-dialog[open].is-closing, .game-dialog[open].is-closing::backdrop { animation: none; }
+}
 .dialog-close {
     position: relative;
     flex: 0 0 auto;
@@ -134,7 +170,8 @@
     padding: 12px clamp(24px, 3vw, 48px) 32px;
 }
 .game-visual { min-width: 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
-.game-visual .game-tags { margin-top: 24px; }
+.gallery-footer { display: flex; align-items: center; gap: 16px; padding-top: 12px; }
+.gallery-footer .game-tags { flex: 1 1 0; min-width: 0; justify-content: flex-end; gap: 6px; overflow-wrap: anywhere; }
 .game-meta {
     display: grid;
     gap: 0;
@@ -159,6 +196,15 @@
 }
 .game-media--detail { width: 100%; aspect-ratio: 1920 / 1080; border-radius: 10px; }
 .game-media--detail img { object-fit: contain; }
+.gallery-slide { position: absolute; inset: 0; display: grid; place-items: center; opacity: 0; transition: opacity 600ms ease; }
+.gallery-slide.is-active { opacity: 1; }
+.gallery-thumbnails { position: relative; display: flex; flex: 0 1 auto; min-width: 0; max-width: 65%; gap: 10px; overflow-x: auto; padding: 3px 3px 8px; }
+.gallery-thumbnails button { flex: 0 0 112px; height: 63px; padding: 0; overflow: hidden; border: 2px solid transparent; border-radius: 6px; background: #1b2330; color: var(--text); cursor: pointer; opacity: 0.55; }
+.gallery-thumbnails button[aria-pressed="true"] { border-color: var(--games); opacity: 1; }
+.gallery-thumbnails button:hover { opacity: 1; }
+.gallery-thumbnails img { width: 100%; height: 100%; object-fit: contain; }
+.game-gallery button:focus-visible { outline: 2px solid var(--games); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .gallery-slide { transition: none; } }
 .game-detail { display: flex; flex-direction: column; min-height: 0; min-width: 0; }
 .game-detail h2 { flex: 0 1 auto; max-height: 40%; overflow-y: auto; margin: 0 0 24px; font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1.4; overflow-wrap: anywhere; }
 .game-description { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; margin: 0; padding-right: 16px; line-height: 1.9; white-space: pre-wrap; overflow-wrap: anywhere; }
@@ -169,7 +215,8 @@
 .game-description-tabs button[aria-selected="true"] { background: var(--games); border-color: var(--games); color: #10180c; }
 .game-description-tabs button:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 
-@media (max-width: 1200px) { .games-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 1400px) { .games-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 1100px) { .games-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 900px) { .games-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 760px) {
     .game-dialog { width: calc(100% - 24px); height: calc(100vh - 24px); height: calc(100dvh - 24px); }

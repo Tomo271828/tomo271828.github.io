@@ -13,6 +13,7 @@
     const gamesBaseUrl = new URL("./", scriptUrl);
     let opener;
     let selectedGame;
+    let disposeGallery;
     let descriptionRequest;
     const descriptionTabs = [...document.querySelectorAll('.game-description-tabs [role="tab"]')];
 
@@ -138,7 +139,8 @@
             developmentPeriod.textContent = game.developmentPeriod || "未設定";
             selectedGame = game;
             selectDescription(descriptionTabs[0]);
-            image.replaceChildren(makeImage(game, true));
+            disposeGallery?.();
+            disposeGallery = window.createGameGallery(image, game, gamesBaseUrl, tags);
             dialog.showModal();
             dialog.scrollTop = 0;
             description.scrollTop = 0;
@@ -183,15 +185,19 @@
         tagOptions.append(label);
     }
     if (!allTags.length) tagOptions.textContent = "登録されたタグはありません。";
+    function setTagPanelOpen(open) {
+        tagPanel.classList.toggle("is-open", open);
+        tagPanel.inert = !open;
+        tagPanel.setAttribute("aria-hidden", String(!open));
+        tagToggle.setAttribute("aria-expanded", String(open));
+    }
     tagToggle.addEventListener("click", () => {
-        tagPanel.hidden = !tagPanel.hidden;
-        tagToggle.setAttribute("aria-expanded", String(!tagPanel.hidden));
+        setTagPanelOpen(tagToggle.getAttribute("aria-expanded") !== "true");
     });
     tagPanel.addEventListener("keydown", event => {
         if (event.key === "Escape") {
-            tagPanel.hidden = true;
-            tagToggle.setAttribute("aria-expanded", "false");
             tagToggle.focus();
+            setTagPanelOpen(false);
         }
     });
     document.getElementById("games-tag-clear").addEventListener("click", () => {
@@ -199,44 +205,122 @@
         for (const checkbox of tagOptions.querySelectorAll("input")) checkbox.checked = false;
         renderGames();
     });
-    function renderGames() {
+    let renderVersion = 0;
+    let listAnimations = [];
+    let renderedGrouping;
+    async function renderGames(animateGrouping = true, preserveHeadings = false) {
+        const version = ++renderVersion;
+        for (const animation of listAnimations) animation.cancel();
+        listAnimations = [];
+        const animate = animateGrouping && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const removingGrouping = grouping === null && !!grid.querySelector(".games-group-heading");
+        const play = async (elements, keyframes, duration) => {
+            const animations = [...elements].map(element => element.animate(keyframes, {
+                duration, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "both",
+            }));
+            listAnimations.push(...animations);
+            await Promise.allSettled(animations.map(animation => animation.finished));
+        };
+        if (animate) {
+            await play(grid.querySelectorAll(".games-grid"), [
+                { opacity: 1, transform: "translateY(0)" },
+                { opacity: 0, transform: `translateY(${removingGrouping ? 12 : 20}px)` },
+            ], removingGrouping ? 260 : 180);
+            if (version !== renderVersion) return;
+            if (removingGrouping) {
+                await play(grid.querySelectorAll(".games-group-heading"), [
+                    { opacity: 1, transform: "translateX(0)" },
+                    { opacity: 0, transform: "translateX(32px)" },
+                ], 240);
+                if (version !== renderVersion) return;
+            }
+        }
+        for (const animation of listAnimations) animation.cancel();
+        listAnimations = [];
         const fragment = document.createDocumentFragment();
+        const groups = window.arrangeGames(games, ascending, grouping, [...selectedTags], tagMode);
+        const existingSections = [...grid.children];
+        const reuseSections = preserveHeadings && renderedGrouping === grouping &&
+            existingSections.length === groups.length;
         let matchCount = 0;
-        for (const group of window.arrangeGames(games, ascending, grouping, [...selectedTags], tagMode)) {
-            const section = document.createElement("section");
-            if (grouping) {
+        for (const [index, group] of groups.entries()) {
+            const section = reuseSections ? existingSections[index] : document.createElement("section");
+            if (grouping && !reuseSections) {
                 const heading = document.createElement("h2");
                 heading.className = "games-group-heading";
-                heading.textContent = group.label;
+                heading.textContent = `${group.label} (${group.entries.length})`;
                 section.append(heading);
             }
-            const list = document.createElement("ul");
+            const list = reuseSections ? section.querySelector(".games-grid") : document.createElement("ul");
             list.className = "games-grid";
+            if (animate) list.style.opacity = "0";
             list.setAttribute("aria-label", group.label || "ゲーム一覧");
             for (const entry of group.entries) {
                 cards[entry.index].classList.toggle("game-unmatched", !entry.matches);
                 if (entry.matches) matchCount++;
                 list.append(cards[entry.index]);
             }
-            section.append(list);
-            fragment.append(section);
+            if (!reuseSections) {
+                section.append(list);
+                fragment.append(section);
+            }
         }
-        grid.replaceChildren(fragment);
+        if (!reuseSections) grid.replaceChildren(fragment);
+        renderedGrouping = grouping;
         tagToggle.textContent = selectedTags.size ? `タグ絞り込み（${selectedTags.size}）` : "タグ絞り込み";
         tagStatus.textContent = selectedTags.size ? `${tagMode.toUpperCase()}検索：${games.length}作品中${matchCount}作品が該当${grouping ? "（各分類内で優先表示）" : ""}` : "";
         sortButton.textContent = `開発時期${ascending ? "↑" : "↓"}`;
         sortButton.setAttribute("aria-label", `開発時期：${ascending ? "古い順。クリックで新しい順に変更" : "新しい順。クリックで古い順に変更"}`);
         for (const button of groupButtons) button.setAttribute("aria-pressed", String(button.dataset.group === grouping));
+        if (animate) {
+            if (!reuseSections) await play(grid.querySelectorAll(".games-group-heading"), [
+                { opacity: 0, transform: "translateX(32px)" },
+                { opacity: 1, transform: "translateX(0)" },
+            ], 240);
+            if (version !== renderVersion) return;
+            await play(grid.querySelectorAll(".games-grid"), [
+                { opacity: 0, transform: `translateY(${removingGrouping ? 20 : 12}px)` },
+                { opacity: 1, transform: "translateY(0)" },
+            ], removingGrouping ? 180 : 260);
+            if (version !== renderVersion) return;
+            for (const list of grid.querySelectorAll(".games-grid")) list.style.removeProperty("opacity");
+            for (const animation of listAnimations) animation.cancel();
+            listAnimations = [];
+        }
     }
-    sortButton.addEventListener("click", () => { ascending = !ascending; renderGames(); });
+    sortButton.addEventListener("click", () => { ascending = !ascending; renderGames(true, true); });
     for (const button of groupButtons) button.addEventListener("click", () => {
         grouping = grouping === button.dataset.group ? null : button.dataset.group;
-        renderGames();
+        renderGames(true);
     });
-    renderGames();
+    renderGames(false);
     document.getElementById("games-empty").hidden = games.length > 0;
 
-    dialog.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
+    let closeTimer;
+    function finishClose() {
+        clearTimeout(closeTimer);
+        if (dialog.open) dialog.close();
+        dialog.classList.remove("is-closing");
+    }
+    function requestClose() {
+        if (!dialog.open || dialog.classList.contains("is-closing")) return;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            finishClose();
+            return;
+        }
+        dialog.classList.add("is-closing");
+        // アニメーション完了イベントが発火しない場合にも確実に閉じます。
+        closeTimer = setTimeout(finishClose, 400);
+    }
+    dialog.addEventListener("animationend", event => {
+        if (event.target === dialog && event.animationName === "game-dialog-exit" &&
+            dialog.classList.contains("is-closing")) finishClose();
+    });
+    dialog.querySelector(".dialog-close").addEventListener("click", requestClose);
+    dialog.addEventListener("cancel", event => {
+        event.preventDefault();
+        requestClose();
+    });
     // 背景を押して離した場合のみ閉じる（説明文を選択する操作と区別）。
     let backdropPressed = false;
     const isOutside = (event) => {
@@ -246,10 +330,14 @@
     };
     dialog.addEventListener("pointerdown", (event) => { backdropPressed = isOutside(event); });
     dialog.addEventListener("pointerup", (event) => {
-        if (backdropPressed && isOutside(event)) dialog.close();
+        if (backdropPressed && isOutside(event)) requestClose();
         backdropPressed = false;
     });
     dialog.addEventListener("close", () => {
+        clearTimeout(closeTimer);
+        dialog.classList.remove("is-closing");
+        disposeGallery?.();
+        disposeGallery = undefined;
         descriptionRequest?.abort();
         selectedGame = undefined;
         document.body.classList.remove("game-dialog-open");

@@ -1,0 +1,36 @@
+.competitive-main { width: min(1120px, calc(100% - 48px)); margin: 0 auto; padding: 48px 0 96px; }
+.rating-panel { padding: clamp(16px, 3vw, 32px); }
+.rating-header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.rating-header h2 { margin: 0; font-size: clamp(1.5rem, 3vw, 2rem); }
+.rating-header a { color: var(--competitive); }
+.rating-tabs { display: flex; gap: 8px; margin-top: 24px; }
+.rating-tabs button { padding: 12px 18px; border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--muted); font: inherit; cursor: pointer; }
+.rating-tabs button[aria-selected="true"] { background: var(--competitive); border-color: var(--competitive); color: #07131a; }
+.rating-tabs button:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+.rating-stats { display: flex; flex-wrap: wrap; gap: 20px 40px; margin: 24px 0; }
+.rating-stats div { display: grid; gap: 6px; }
+.rating-stats dt, .rating-updated { color: var(--muted); font-size: .875rem; }
+.rating-stats dd { margin: 0; font-size: 1.7rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.rating-chart { width: 100%; overflow-x: auto; }
+.rating-chart svg { display: block; width: 100%; min-width: 560px; height: auto; }
+.rating-chart circle:focus { outline: none; stroke: #fff; stroke-width: 4px; }
+.rating-chart-background { animation: rating-background-enter 1000ms ease-out both; }
+.rating-tip-glow { fill: #c7f5ff; filter: url(#rating-tip-glow); pointer-events: none; }
+.rating-tip-core { fill: #fff; pointer-events: none; }
+@keyframes rating-background-enter { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+    .rating-chart-background { animation: none; }
+    .rating-tip-glow, .rating-tip-core { display: none; animation: none; }
+}
+.rating-caption { min-height: 3em; margin: 12px 0; line-height: 1.5; }
+.rating-updated { margin: 0; line-height: 1.8; }
+.competitive-intro { margin-bottom: 40px; }
+.competitive-intro h1 { font-size: clamp(2.2rem, 6vw, 4.5rem); line-height: 1.2; }
+@media (min-width: 960px) {
+    #rating-content { display: grid; grid-template-columns: minmax(0, 1fr) 180px; column-gap: 32px; margin-top: 24px; align-items: start; }
+    .rating-chart { grid-column: 1; grid-row: 1; min-width: 0; }
+    .rating-stats { grid-column: 2; grid-row: 1 / span 3; flex-direction: column; flex-wrap: nowrap; gap: 24px; margin: 0; padding-top: 16px; }
+    .rating-caption { grid-column: 1; grid-row: 2; }
+    .rating-updated { grid-column: 1; grid-row: 3; }
+}
+@media (max-width: 720px) { .competitive-main { width: calc(100% - 32px); padding-top: 24px; } }

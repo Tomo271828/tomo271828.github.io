@@ -6,18 +6,41 @@
     <meta name="description" content="tomoの競技プログラミング活動を紹介します。">
     <title>競技プログラミング | tomo Portfolio</title>
     <link rel="stylesheet" href="../style.css?v=20260907-2">
+    <link rel="stylesheet" href="rating.css?v=20260909-animation-125">
+    <script src="rating.js?v=20260909-animation-125" defer></script>
 </head>
 <body class="subpage subpage--competitive">
     <header class="subpage__header">
         <a class="site-name" href="../">TOMO PORTFOLIO</a>
         <a class="back-link" href="../">← トップへ戻る</a>
     </header>
-    <main class="subpage__main">
-        <p class="subpage__number" aria-hidden="true">02</p>
-        <div>
-            <h1>競技<br>プログラミング</h1>
-            <p class="subpage__intro">競技プログラミングの活動を紹介するページです。実績や参加記録は、これから追加していきます。</p>
+    <main class="competitive-main">
+        <div class="competitive-intro">
+            <h1>競技プログラミング</h1>
         </div>
+        <section class="rating-panel" aria-labelledby="rating-title">
+            <div class="rating-header">
+                <h2 id="rating-title">AtCoder Rating</h2>
+                <a id="atcoder-profile" target="_blank" rel="noopener noreferrer">AtCoder</a>
+            </div>
+            <div class="rating-tabs" role="tablist" aria-label="Ratingの種類">
+                <button type="button" id="rating-tab-algo" role="tab" data-rating-mode="algo" aria-selected="true" aria-controls="rating-content">Algorithm</button>
+                <button type="button" id="rating-tab-heuristic" role="tab" data-rating-mode="heuristic" aria-selected="false" aria-controls="rating-content" tabindex="-1">Heuristic</button>
+            </div>
+            <div id="rating-content" role="tabpanel" aria-labelledby="rating-tab-algo">
+            <dl class="rating-stats">
+                <div><dt>現在のRating</dt><dd id="rating-current">—</dd></div>
+                <div><dt>最高Rating</dt><dd id="rating-highest">—</dd></div>
+                <div><dt>Rated参加回数</dt><dd id="rating-count">—</dd></div>
+                <div><dt>上位%</dt><dd id="rating-top-percent">—</dd></div>
+            </dl>
+            <div class="rating-chart" id="rating-chart"></div>
+            <p class="rating-caption" id="rating-caption" aria-live="polite">Rating履歴を読み込んでいます…</p>
+            <p class="rating-updated" id="rating-updated"></p>
+            </div>
+            <noscript>Ratingグラフを見るにはJavaScriptを有効にしてください。</noscript>
+        </section>
+        <p class="subpage__intro"></p>
     </main>
 </body>
 </html>

@@ -1,0 +1,428 @@
+{
+  "userId": "Tomo271828",
+  "modes": {
+    "algo": {
+      "userId": "Tomo271828",
+      "updatedAt": "2026-09-09T09:02:53.043219+00:00",
+      "source": "https://atcoder.jp/users/Tomo271828/history/json?contestType=algo",
+      "topPercent": 2.4,
+      "profileSource": "https://atcoder.jp/users/Tomo271828?contestType=algo&lang=en",
+      "history": [
+        {
+          "date": "2024-04-06T22:40:00+09:00",
+          "rating": 9,
+          "contest": "トヨタ自動車プログラミングコンテスト2024#4（AtCoder Beginner Contest 348）"
+        },
+        {
+          "date": "2024-04-13T22:40:00+09:00",
+          "rating": 65,
+          "contest": "AtCoder Beginner Contest 349"
+        },
+        {
+          "date": "2024-04-20T22:40:00+09:00",
+          "rating": 119,
+          "contest": "AtCoder Beginner Contest 350（Promotion of AtCoderJobs）"
+        },
+        {
+          "date": "2024-04-27T22:40:00+09:00",
+          "rating": 174,
+          "contest": "AtCoder Beginner Contest 351"
+        },
+        {
+          "date": "2024-05-11T22:40:00+09:00",
+          "rating": 280,
+          "contest": "AtCoder Beginner Contest 353"
+        },
+        {
+          "date": "2024-05-25T22:40:00+09:00",
+          "rating": 418,
+          "contest": "東京海上日動プログラミングコンテスト2024（AtCoder Beginner Contest 355）"
+        },
+        {
+          "date": "2024-06-01T22:40:00+09:00",
+          "rating": 451,
+          "contest": "AtCoder Beginner Contest 356"
+        },
+        {
+          "date": "2024-06-08T22:40:00+09:00",
+          "rating": 484,
+          "contest": "サントリープログラミングコンテスト2024（AtCoder Beginner Contest 357）"
+        },
+        {
+          "date": "2024-06-15T22:40:00+09:00",
+          "rating": 502,
+          "contest": "CodeQUEEN 2024 予選 (AtCoder Beginner Contest 358)"
+        },
+        {
+          "date": "2024-06-22T22:40:00+09:00",
+          "rating": 569,
+          "contest": "ユニークビジョンプログラミングコンテスト2024 夏（AtCoder Beginner Contest 359）"
+        },
+        {
+          "date": "2024-06-30T22:40:00+09:00",
+          "rating": 645,
+          "contest": "AtCoder Beginner Contest 360"
+        },
+        {
+          "date": "2024-07-13T22:40:00+09:00",
+          "rating": 631,
+          "contest": "トヨタ自動車プログラミングコンテスト2024#7（AtCoder Beginner Contest 362）"
+        },
+        {
+          "date": "2024-07-20T22:40:00+09:00",
+          "rating": 690,
+          "contest": "AtCoder Beginner Contest 363"
+        },
+        {
+          "date": "2024-07-27T22:40:00+09:00",
+          "rating": 808,
+          "contest": "日本レジストリサービス（JPRS）プログラミングコンテスト2024#2（AtCoder Beginner Contest 364）"
+        },
+        {
+          "date": "2024-08-03T22:40:00+09:00",
+          "rating": 852,
+          "contest": "トヨタ自動車プログラミングコンテスト2024#8（AtCoder Beginner Contest 365）"
+        },
+        {
+          "date": "2024-08-10T22:40:00+09:00",
+          "rating": 892,
+          "contest": "AtCoder Beginner Contest 366"
+        },
+        {
+          "date": "2024-08-17T22:40:00+09:00",
+          "rating": 894,
+          "contest": "AtCoder Beginner Contest 367"
+        },
+        {
+          "date": "2024-08-24T22:40:00+09:00",
+          "rating": 897,
+          "contest": "日立ヴァンタラプログラミングコンテスト2024（AtCoder Beginner Contest 368）"
+        },
+        {
+          "date": "2024-08-31T22:40:00+09:00",
+          "rating": 920,
+          "contest": "AtCoder Beginner Contest 369"
+        },
+        {
+          "date": "2024-09-07T22:40:00+09:00",
+          "rating": 930,
+          "contest": "トヨタ自動車プログラミングコンテスト2024#9（AtCoder Beginner Contest 370）"
+        },
+        {
+          "date": "2024-09-14T22:40:00+09:00",
+          "rating": 967,
+          "contest": "AtCoder Beginner Contest 371"
+        },
+        {
+          "date": "2024-09-28T22:40:00+09:00",
+          "rating": 968,
+          "contest": "AtCoder Beginner Contest 373"
+        },
+        {
+          "date": "2024-10-05T22:40:00+09:00",
+          "rating": 979,
+          "contest": "キーエンスプログラミングコンテスト2024（AtCoder Beginner Contest 374）"
+        },
+        {
+          "date": "2024-10-12T22:40:00+09:00",
+          "rating": 1007,
+          "contest": "パナソニックグループ プログラミングコンテスト2024（AtCoder Beginner Contest 375）"
+        },
+        {
+          "date": "2024-10-26T22:40:00+09:00",
+          "rating": 1088,
+          "contest": "トヨタシステムズプログラミングコンテスト2024（AtCoder Beginner Contest 377)"
+        },
+        {
+          "date": "2024-11-02T22:40:00+09:00",
+          "rating": 1108,
+          "contest": "AtCoder Beginner Contest 378"
+        },
+        {
+          "date": "2024-11-30T22:40:00+09:00",
+          "rating": 1156,
+          "contest": "AtCoder プログラミングコンテスト2024（AtCoder Beginner Contest 382）"
+        },
+        {
+          "date": "2024-12-07T22:40:00+09:00",
+          "rating": 1249,
+          "contest": "大和証券プログラミングコンテスト2024（AtCoder Beginner Contest 383）"
+        },
+        {
+          "date": "2024-12-08T23:00:00+09:00",
+          "rating": 1263,
+          "contest": "AtCoder Regular Contest 189 (Div. 2)"
+        },
+        {
+          "date": "2024-12-14T22:40:00+09:00",
+          "rating": 1261,
+          "contest": "トヨタ自動車プログラミングコンテスト2024#12（AtCoder Beginner Contest 384）"
+        },
+        {
+          "date": "2024-12-21T22:40:00+09:00",
+          "rating": 1249,
+          "contest": "ユニークビジョンプログラミングコンテスト2024 クリスマス（AtCoder Beginner Contest 385）"
+        },
+        {
+          "date": "2025-01-04T22:40:00+09:00",
+          "rating": 1246,
+          "contest": "AtCoder Beginner Contest 387（Promotion of AtCoderJobs）"
+        },
+        {
+          "date": "2025-01-25T22:40:00+09:00",
+          "rating": 1230,
+          "contest": "AtCoder Beginner Contest 390"
+        },
+        {
+          "date": "2025-01-26T23:00:00+09:00",
+          "rating": 1183,
+          "contest": "AtCoder Regular Contest 191 (Div. 2)"
+        },
+        {
+          "date": "2025-02-01T22:40:00+09:00",
+          "rating": 1276,
+          "contest": "AtCoder Beginner Contest 391"
+        },
+        {
+          "date": "2025-02-22T22:40:00+09:00",
+          "rating": 1245,
+          "contest": "鹿島建設プログラミングコンテスト2025（AtCoder Beginner Contest 394）"
+        },
+        {
+          "date": "2025-03-15T22:40:00+09:00",
+          "rating": 1295,
+          "contest": "オムロンプログラミングコンテスト2025（AtCoder Beginner Contest 397）"
+        },
+        {
+          "date": "2025-03-22T22:40:00+09:00",
+          "rating": 1326,
+          "contest": "ユニークビジョンプログラミングコンテスト2025 春（AtCoder Beginner Contest 398）"
+        },
+        {
+          "date": "2025-04-05T22:40:00+09:00",
+          "rating": 1293,
+          "contest": "AtCoder Beginner Contest 400"
+        },
+        {
+          "date": "2025-04-12T22:40:00+09:00",
+          "rating": 1324,
+          "contest": "AtCoder Beginner Contest 401"
+        },
+        {
+          "date": "2025-04-27T22:40:00+09:00",
+          "rating": 1341,
+          "contest": "AtCoder Beginner Contest 403（Promotion of AtCoder Career Design DAY）"
+        },
+        {
+          "date": "2025-05-03T22:40:00+09:00",
+          "rating": 1362,
+          "contest": "AtCoder Beginner Contest 404（Promotion for Engineer Guild）"
+        },
+        {
+          "date": "2025-05-10T22:40:00+09:00",
+          "rating": 1351,
+          "contest": "AtCoder Beginner Contest 405（Promotion of AtCoder Career Design DAY）"
+        },
+        {
+          "date": "2025-05-17T22:40:00+09:00",
+          "rating": 1370,
+          "contest": "パナソニックグループ プログラミングコンテスト2025（AtCoder Beginner Contest 406）"
+        },
+        {
+          "date": "2025-05-24T22:40:00+09:00",
+          "rating": 1352,
+          "contest": "AtCoder Beginner Contest 407（Promotion of AtCoderJobs）"
+        },
+        {
+          "date": "2025-05-31T22:40:00+09:00",
+          "rating": 1370,
+          "contest": "AtCoder Beginner Contest 408"
+        },
+        {
+          "date": "2025-06-07T22:40:00+09:00",
+          "rating": 1378,
+          "contest": "AtCoder Beginner Contest 409"
+        },
+        {
+          "date": "2025-06-14T22:40:00+09:00",
+          "rating": 1389,
+          "contest": "CodeQUEEN 2025 予選 (AtCoder Beginner Contest 410)"
+        },
+        {
+          "date": "2025-06-28T22:40:00+09:00",
+          "rating": 1381,
+          "contest": "日本最強プログラマー学生選手権～Advance～ -予選- （AtCoder Beginner Contest 412）"
+        },
+        {
+          "date": "2025-07-26T22:40:00+09:00",
+          "rating": 1392,
+          "contest": "AtCoder Beginner Contest 416"
+        },
+        {
+          "date": "2025-08-09T22:40:00+09:00",
+          "rating": 1418,
+          "contest": "AtCoder Beginner Contest 418"
+        },
+        {
+          "date": "2025-08-16T22:40:00+09:00",
+          "rating": 1400,
+          "contest": "AtCoder Beginner Contest 419"
+        },
+        {
+          "date": "2025-08-24T22:40:00+09:00",
+          "rating": 1387,
+          "contest": "AtCoder Beginner Contest 420"
+        },
+        {
+          "date": "2025-08-30T22:40:00+09:00",
+          "rating": 1371,
+          "contest": "AtCoder Beginner Contest 421"
+        },
+        {
+          "date": "2025-09-07T14:50:00+09:00",
+          "rating": 1397,
+          "contest": "AtCoder Beginner Contest 422"
+        },
+        {
+          "date": "2025-09-14T22:40:00+09:00",
+          "rating": 1442,
+          "contest": "AtCoder Beginner Contest 423"
+        },
+        {
+          "date": "2025-10-04T22:40:00+09:00",
+          "rating": 1444,
+          "contest": "AtCoder Beginner Contest 426"
+        },
+        {
+          "date": "2025-10-25T22:40:00+09:00",
+          "rating": 1460,
+          "contest": "Polaris.AI プログラミングコンテスト 2025（AtCoder Beginner Contest 429）"
+        },
+        {
+          "date": "2025-11-08T22:40:00+09:00",
+          "rating": 1501,
+          "contest": "トヨタシステムズプログラミングコンテスト2025（AtCoder Beginner Contest 431）"
+        },
+        {
+          "date": "2025-11-15T22:40:00+09:00",
+          "rating": 1515,
+          "contest": "オムロンプログラミングコンテスト2025 #2（AtCoder Beginner Contest 432）"
+        },
+        {
+          "date": "2025-12-06T22:40:00+09:00",
+          "rating": 1509,
+          "contest": "AtCoder Beginner Contest 435"
+        },
+        {
+          "date": "2025-12-27T22:40:00+09:00",
+          "rating": 1534,
+          "contest": "AtCoder Beginner Contest 438"
+        },
+        {
+          "date": "2026-01-03T22:40:00+09:00",
+          "rating": 1536,
+          "contest": "AtCoder Beginner Contest 439（Promotion of AtCoderJobs）"
+        },
+        {
+          "date": "2026-01-10T22:40:00+09:00",
+          "rating": 1583,
+          "contest": "AtCoder Beginner Contest 440 (Promotion of Engineer Guild Fes)"
+        },
+        {
+          "date": "2026-01-17T22:40:00+09:00",
+          "rating": 1610,
+          "contest": "AtCoder Beginner Contest 441 (Promotion of Engineer Guild Fes)"
+        },
+        {
+          "date": "2026-03-14T22:40:00+09:00",
+          "rating": 1626,
+          "contest": "AtCoder Beginner Contest 449"
+        },
+        {
+          "date": "2026-03-21T22:40:00+09:00",
+          "rating": 1640,
+          "contest": "AtCoder Beginner Contest 450"
+        },
+        {
+          "date": "2026-03-28T22:40:00+09:00",
+          "rating": 1674,
+          "contest": "AtCoder Beginner Contest 451"
+        },
+        {
+          "date": "2026-04-11T22:40:00+09:00",
+          "rating": 1709,
+          "contest": "AtCoder Beginner Contest 453"
+        },
+        {
+          "date": "2026-04-18T22:40:00+09:00",
+          "rating": 1727,
+          "contest": "キーサイト・テクノロジープログラミングコンテスト（AtCoder Beginner Contest 454）"
+        },
+        {
+          "date": "2026-04-25T22:40:00+09:00",
+          "rating": 1736,
+          "contest": "Ｓｋｙ株式会社プログラミングコンテスト2026（AtCoder Beginner Contest 455）"
+        },
+        {
+          "date": "2026-05-02T22:40:00+09:00",
+          "rating": 1721,
+          "contest": "AtCoder Beginner Contest 456（Promotion of AtCoder Career Design DAY）"
+        },
+        {
+          "date": "2026-05-30T22:40:00+09:00",
+          "rating": 1739,
+          "contest": "AtCoder Beginner Contest 460"
+        },
+        {
+          "date": "2026-06-06T22:40:00+09:00",
+          "rating": 1759,
+          "contest": "AtCoder Beginner Contest 461"
+        },
+        {
+          "date": "2026-06-13T22:40:00+09:00",
+          "rating": 1758,
+          "contest": "CodeQUEEN 2026 予選 (AtCoder Beginner Contest 462)"
+        },
+        {
+          "date": "2026-06-20T22:40:00+09:00",
+          "rating": 1780,
+          "contest": "AtCoder Beginner Contest 463"
+        },
+        {
+          "date": "2026-06-27T22:40:00+09:00",
+          "rating": 1758,
+          "contest": "第七回日本最強プログラマー学生選手権～Advance～ -予選- （AtCoder Beginner Contest 464）"
+        },
+        {
+          "date": "2026-07-25T22:40:00+09:00",
+          "rating": 1772,
+          "contest": "AtCoder Beginner Contest 468"
+        },
+        {
+          "date": "2026-08-22T22:40:00+09:00",
+          "rating": 1776,
+          "contest": "AtCoder Talent Quest 〜 今から28卒には脱出してもらいます〜予選（AtCoder Beginner Contest 472）"
+        },
+        {
+          "date": "2026-09-06T14:50:00+09:00",
+          "rating": 1760,
+          "contest": "AtCoder Beginner Contest 474"
+        }
+      ]
+    },
+    "heuristic": {
+      "userId": "Tomo271828",
+      "updatedAt": "2026-09-09T09:02:55.334539+00:00",
+      "source": "https://atcoder.jp/users/Tomo271828/history/json?contestType=heuristic",
+      "topPercent": 74.78,
+      "profileSource": "https://atcoder.jp/users/Tomo271828?contestType=heuristic&lang=en",
+      "history": [
+        {
+          "date": "2026-07-18T19:00:00+09:00",
+          "rating": 65,
+          "contest": "estie プログラミングコンテスト2026 （AtCoder Heuristic Contest 068）"
+        }
+      ]
+    }
+  }
+}

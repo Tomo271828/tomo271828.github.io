@@ -64,7 +64,7 @@ h1 {
 
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     border-top: 1px solid var(--line);
 }
 
@@ -79,10 +79,6 @@ h1 {
     border-bottom: 1px solid var(--line);
     text-decoration: none;
     transition: background-color 220ms ease, color 220ms ease;
-}
-
-.category-card:first-child {
-    border-right: 1px solid var(--line);
 }
 
 .category-card::after {
@@ -258,17 +254,9 @@ h1 {
         gap: 20px;
     }
 
-    .category-grid {
-        grid-template-columns: 1fr;
-    }
-
     .category-card {
         min-height: 230px;
         padding: 24px 8px;
-    }
-
-    .category-card:first-child {
-        border-right: 0;
     }
 
     .subpage__main {

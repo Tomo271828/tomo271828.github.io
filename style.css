@@ -6,6 +6,9 @@
     --line: rgba(255, 255, 255, 0.13);
     --games: #a8ff78;
     --competitive: #71d7ff;
+    --research: #c5a3ff;
+    --articles: #ffbf69;
+    --other: #ff8fb3;
 }
 
 * {
@@ -107,6 +110,24 @@ h1 {
     color: #07131a;
 }
 
+.category-card--research:hover,
+.category-card--research:focus-visible {
+    background: var(--research);
+    color: #140d1f;
+}
+
+.category-card--articles:hover,
+.category-card--articles:focus-visible {
+    background: var(--articles);
+    color: #1c1005;
+}
+
+.category-card--other:hover,
+.category-card--other:focus-visible {
+    background: var(--other);
+    color: #1e0911;
+}
+
 .category-card:hover::after,
 .category-card:focus-visible::after {
     opacity: 0.35;
@@ -125,14 +146,28 @@ h1 {
     opacity: 0.65;
 }
 
-.category-card__title {
+.category-card__heading {
     position: relative;
     z-index: 1;
+    display: grid;
+    justify-items: start;
+    gap: 10px;
+}
+
+.category-card__title {
     max-width: 9em;
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 700;
     letter-spacing: -0.04em;
     line-height: 1.15;
+}
+
+.category-card__translation {
+    font-family: ui-monospace, "Cascadia Code", monospace;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    opacity: 0.62;
 }
 
 .category-card__link {
@@ -212,6 +247,10 @@ h1 {
 .subpage--competitive h1 {
     color: var(--competitive);
 }
+
+.subpage--research h1 { color: var(--research); }
+.subpage--articles h1 { color: var(--articles); }
+.subpage--other h1 { color: var(--other); }
 
 .prepare-page {
     display: flex;

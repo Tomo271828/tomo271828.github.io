@@ -6,8 +6,8 @@
     <meta name="description" content="tomoの競技プログラミング活動を紹介します。">
     <title>競技プログラミング | tomo Portfolio</title>
     <link rel="stylesheet" href="../style.css?v=20260907-2">
-    <link rel="stylesheet" href="rating.css?v=20260909-animation-125">
-    <script src="rating.js?v=20260909-animation-125" defer></script>
+    <link rel="stylesheet" href="rating.css?v=20260912-mobile-chart">
+    <script src="rating.js?v=20260912-mobile-chart" defer></script>
 </head>
 <body class="subpage subpage--competitive">
     <header class="subpage__header">
@@ -20,8 +20,8 @@
         </div>
         <section class="rating-panel" aria-labelledby="rating-title">
             <div class="rating-header">
-                <h2 id="rating-title">AtCoder Rating</h2>
-                <a id="atcoder-profile" target="_blank" rel="noopener noreferrer">AtCoder</a>
+                <h2 id="rating-title">AtCoder</h2>
+                <a id="atcoder-profile" target="_blank" rel="noopener noreferrer">AtCoder ユーザーページ</a>
             </div>
             <div class="rating-tabs" role="tablist" aria-label="Ratingの種類">
                 <button type="button" id="rating-tab-algo" role="tab" data-rating-mode="algo" aria-selected="true" aria-controls="rating-content">Algorithm</button>
@@ -33,6 +33,7 @@
                 <div><dt>最高Rating</dt><dd id="rating-highest">—</dd></div>
                 <div><dt>Rated参加回数</dt><dd id="rating-count">—</dd></div>
                 <div><dt>上位%</dt><dd id="rating-top-percent">—</dd></div>
+                <div><dt>総AC数 <small>（AtCoder Problems）</small></dt><dd id="rating-ac-count">—</dd></div>
             </dl>
             <div class="rating-chart" id="rating-chart"></div>
             <p class="rating-caption" id="rating-caption" aria-live="polite">Rating履歴を読み込んでいます…</p>
@@ -40,7 +41,18 @@
             </div>
             <noscript>Ratingグラフを見るにはJavaScriptを有効にしてください。</noscript>
         </section>
-        <p class="subpage__intro"></p>
+        <section class="rating-panel library-panel" aria-labelledby="library-title">
+            <div class="rating-header">
+                <h2 id="library-title">TomoLibrary</h2>
+            </div>
+            <p class="library-description">C#で記述された、競プロ用自作ライブラリ</p>
+            <h3 class="library-checker-title">Library Checker</h3>
+            <dl class="rating-stats library-stats">
+                <div><dt>総AC数</dt><dd id="library-ac-count">—</dd></div>
+            </dl>
+            <p class="rating-updated" id="library-updated" aria-live="polite">AC数を読み込んでいます…</p>
+            <noscript>AC数を見るにはJavaScriptを有効にしてください。</noscript>
+        </section>
     </main>
 </body>
 </html>

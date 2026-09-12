@@ -1,10 +1,14 @@
 # AtCoder Rating
 
+「TomoLibrary」ではLibrary CheckerのAC済み問題数を表示します。対象ユーザーは `atcoder-config.json` の `libraryCheckerUserId` で指定します。公開APIの `/users/{name}/statistics` が返す `solved_map` の件数（`AC` と `LATEST_AC`、同じ問題は1問）を保存します。これも既存の毎週日曜01:00（日本時間）の更新処理で取得し、いずれかの履歴・AC数の取得に失敗した場合は保存済みデータを維持します。
+
 グラフの上端は現在のRating + 400を基本とし、過去最高値も収まる高さにします。「上位%」はAlgorithmの公開プロフィールから取得した割合を表示します。週次更新時にRatingと一緒に取得し、取得できない場合は「—」を表示します。
 
 `atcoder-config.json` の `userId` を変更すると取得対象を変更できます。Algorithm / Heuristicのタブで、各部門のRated履歴・Rating・上位割合を切り替えます。初期表示はAlgorithmです。更新処理は両部門を取得し、両方の履歴の取得成功後にまとめて保存します。未参加の部門は参加履歴がない旨を表示します。
 
-手元で更新するには、プロジェクトのルートで `python scripts/update-atcoder.py` を実行します。成功時のみ `atcoder-rating.json` を置き換え、失敗時は以前のデータを残します。ページはHTTPサーバー経由で開いてください。
+総AC数はAtCoder Problemsの `https://kenkoooo.com/atcoder/atcoder-api/v3/user/ac_rank?user={userId}` から取得するAC済み問題数です。同じ問題へのAC提出を重複して数えません。Algorithm / Heuristicのどちらのタブでもユーザー全体の総AC数を表示します。
+
+手元で更新するには、プロジェクトのルートで `python scripts/update-atcoder.py` を実行します。両部門の履歴と総AC数の取得成功時のみ `atcoder-rating.json` を置き換え、失敗時は以前のデータを残します。総AC数も毎週日曜01:00（日本時間）にRatingと一緒に更新します。ページはHTTPサーバー経由で開いてください。
 
 ## 自動更新の有効化
 

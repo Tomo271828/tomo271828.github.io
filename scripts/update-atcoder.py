@@ -1,4 +1,4 @@
-"""Fetch public Algorithm rating history once, preserving saved data on failure."""
+"""Fetch public rating histories and AC count, preserving saved data on failure."""
 import json
 import re
 import time
@@ -58,20 +58,51 @@ def fetch_rating(user, mode):
     return data
 
 
+def fetch_ac_count(user):
+    url = f"https://kenkoooo.com/atcoder/atcoder-api/v3/user/ac_rank?user={user}"
+    request = Request(url, headers={"User-Agent": "PortfolioRatingUpdater/1.0", "Accept": "application/json"})
+    with urlopen(request, timeout=30) as response:
+        result = json.load(response)
+    if not isinstance(result, dict) or type(result.get("count")) is not int or result["count"] < 0:
+        raise ValueError("Invalid AtCoder Problems AC count")
+    print(f"AtCoder Problems: {result['count']} accepted problems")
+    return {"count": result["count"], "updatedAt": datetime.now(timezone.utc).isoformat(), "source": url}
+
+
+def fetch_library_checker_count(user):
+    url = f"https://v3.api.judge.yosupo.jp/users/{user}/statistics"
+    request = Request(url, headers={"User-Agent": "PortfolioRatingUpdater/1.0", "Accept": "application/json"})
+    with urlopen(request, timeout=30) as response:
+        result = json.load(response)
+    solved = result.get("solved_map") if isinstance(result, dict) else None
+    if not isinstance(solved, dict) or any(status not in ("AC", "LATEST_AC") for status in solved.values()):
+        raise ValueError("Invalid Library Checker solved statistics")
+    count = len(solved)
+    print(f"Library Checker: {count} accepted problems")
+    return {"userId": user, "count": count, "updatedAt": datetime.now(timezone.utc).isoformat(), "source": url}
+
+
 def main():
     directory = ROOT / "competitive-programming"
-    user = json.loads((directory / "atcoder-config.json").read_text(encoding="utf-8"))["userId"]
+    config = json.loads((directory / "atcoder-config.json").read_text(encoding="utf-8"))
+    user = config["userId"]
     if not isinstance(user, str) or not re.fullmatch(r"[A-Za-z0-9_]{1,32}", user):
         raise ValueError("Invalid AtCoder userId")
+    library_user = config["libraryCheckerUserId"]
+    if not isinstance(library_user, str) or not re.fullmatch(r"[A-Za-z0-9_-]{1,30}", library_user):
+        raise ValueError("Invalid Library Checker userId")
     algorithm = fetch_rating(user, "algo")
     time.sleep(1.1)
     heuristic = fetch_rating(user, "heuristic")
-    data = {"userId": user, "modes": {"algo": algorithm, "heuristic": heuristic}}
+    ac_count = fetch_ac_count(user)
+    library_checker = fetch_library_checker_count(library_user)
+    data = {"userId": user, "modes": {"algo": algorithm, "heuristic": heuristic},
+            "acCount": ac_count, "libraryChecker": library_checker}
     output = directory / "atcoder-rating.json"
     temporary = output.with_suffix(".json.tmp")
     temporary.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     temporary.replace(output)
-    print(f"Updated both rating histories for {user}")
+    print(f"Updated both rating histories and AC count for {user}")
 
 
 if __name__ == "__main__":

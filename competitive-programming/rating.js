@@ -12,9 +12,24 @@
         return node;
     }
     try {
-        const response = await fetch('atcoder-rating.json');
+        const response = await fetch('atcoder-rating.json', { cache: 'no-cache' });
         if (!response.ok) throw new Error('Rating data unavailable');
         const saved = await response.json();
+        const layoutQuery = window.matchMedia('(max-width: 720px)');
+        const library = saved.libraryChecker;
+        const libraryUpdated = document.getElementById('library-updated');
+        if (Number.isSafeInteger(library?.count) && library.count >= 0) {
+            document.getElementById('library-ac-count').textContent = library.count.toLocaleString('ja-JP');
+            libraryUpdated.textContent = `最終取得：${new Date(library.updatedAt).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}（日本時間） · 毎週日曜 1:00 更新予定`;
+        } else {
+            libraryUpdated.textContent = 'AC数はまだ取得されていません。';
+        }
+        const acCount = saved.acCount;
+        const acCountNode = document.getElementById('rating-ac-count');
+        if (Number.isSafeInteger(acCount?.count) && acCount.count >= 0) {
+            acCountNode.textContent = acCount.count.toLocaleString('ja-JP');
+            acCountNode.title = `最終取得：${new Date(acCount.updatedAt).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}（日本時間） · 毎週日曜 1:00 更新予定`;
+        }
         const tabs = [...document.querySelectorAll('[data-rating-mode]')];
         let animationFrame;
         let statsFrame;
@@ -36,7 +51,7 @@
         }
         const history = data.history;
         const profile = document.getElementById('atcoder-profile');
-        profile.textContent = data.userId;
+        profile.textContent = 'AtCoder ユーザーページ';
         profile.href = `https://atcoder.jp/users/${encodeURIComponent(data.userId)}?contestType=${mode}`;
         document.getElementById('rating-updated').textContent = `最終取得：${new Date(data.updatedAt).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}（日本時間） · 毎週日曜 1:00 更新予定`;
         document.getElementById('rating-count').textContent = history.length;
@@ -87,8 +102,14 @@
             }
             statsFrame = requestAnimationFrame(countFrame);
         }
-        const svg = element('svg', { viewBox: '0 0 960 400', role: 'group', 'aria-label': `${data.userId}の${label} Rating推移。各点を選択すると成績を表示します。` });
-        const left = 60, top = 20, width = 870, height = 325;
+        const compact = layoutQuery.matches;
+        const viewWidth = compact ? 320 : 960;
+        const viewHeight = compact ? 260 : 400;
+        const left = compact ? 36 : 60;
+        const top = compact ? 16 : 20;
+        const width = compact ? 272 : 870;
+        const height = compact ? 194 : 325;
+        const svg = element('svg', { viewBox: `0 0 ${viewWidth} ${viewHeight}`, role: 'group', 'aria-label': `${data.userId}の${label} Rating推移。各点を選択すると成績を表示します。` });
         // 現在値より1色（400）上。過去の最高値も見切れない余白を確保する。
         const ceiling = Math.max(400, latest + 400, highest + 100);
         const start = Date.parse(history[0].date), end = Date.parse(history[history.length - 1].date);
@@ -97,7 +118,7 @@
         const background = element('g', { class: 'rating-chart-background' });
         const definitions = element('defs', {});
         const clip = element('clipPath', { id: 'rating-reveal-clip', clipPathUnits: 'userSpaceOnUse' });
-        const reveal = element('rect', { x: 0, y: 0, width: 960, height: 400 });
+        const reveal = element('rect', { x: 0, y: 0, width: viewWidth, height: viewHeight });
         clip.append(reveal);
         const glowFilter = element('filter', { id: 'rating-tip-glow', x: '-200%', y: '-200%', width: '500%', height: '500%' });
         glowFilter.append(element('feGaussianBlur', { stdDeviation: 5 }));
@@ -108,11 +129,12 @@
             const upper = Math.min(low + 400, ceiling);
             background.append(element('rect', { x: left, y: y(upper), width, height: height * (upper - low) / ceiling, fill: color(low), opacity: .24 }));
             background.append(element('line', { x1: left, x2: left + width, y1: y(low), y2: y(low), stroke: '#ffffff22' }));
-            background.append(element('text', { x: left - 10, y: y(low) + 4, fill: '#b6bdca', 'font-size': 12, 'text-anchor': 'end' }, low));
+            background.append(element('text', { x: left - (compact ? 6 : 10), y: y(low) + 4, fill: '#b6bdca', 'font-size': compact ? 9 : 12, 'text-anchor': 'end' }, low));
         }
-        for (let i = 0; i <= 4; i++) {
-            const time = start + (end - start) * i / 4;
-            background.append(element('text', { x: left + width * i / 4, y: 375, fill: '#b6bdca', 'font-size': 12, 'text-anchor': i === 0 ? 'start' : i === 4 ? 'end' : 'middle' }, dateText(time)));
+        const tickCount = compact ? 2 : 4;
+        for (let i = 0; i <= tickCount; i++) {
+            const time = start + (end - start) * i / tickCount;
+            background.append(element('text', { x: left + width * i / tickCount, y: compact ? 238 : 375, fill: '#b6bdca', 'font-size': compact ? 9 : 12, 'text-anchor': i === 0 ? 'start' : i === tickCount ? 'end' : 'middle' }, dateText(time)));
         }
         const points = history.map(item => [x(item.date), y(item.rating)]);
         plot.append(element('polyline', { points: points.map(point => point.join(',')).join(' '), fill: 'none', stroke: '#e9edf5', 'stroke-width': 1.5, 'stroke-linejoin': 'round' }));
@@ -144,7 +166,7 @@
                 const a = points[index], b = points[Math.min(index + 1, points.length - 1)];
                 const fraction = b[0] === a[0] ? 0 : (tipX - a[0]) / (b[0] - a[0]);
                 const tipY = a[1] + (b[1] - a[1]) * fraction;
-                reveal.setAttribute('width', progress === 1 ? 960 : tipX);
+                reveal.setAttribute('width', progress === 1 ? viewWidth : tipX);
                 glow.setAttribute('transform', `translate(${tipX} ${tipY})`);
                 glow.setAttribute('opacity', String(Math.min(1, (1 - progress) / .15)));
                 if (progress < 1) animationFrame = requestAnimationFrame(frame);
@@ -165,8 +187,13 @@
                 render(tabs[next].dataset.ratingMode);
             });
         });
+        layoutQuery.addEventListener('change', () => {
+            const active = tabs.find(tab => tab.getAttribute('aria-selected') === 'true');
+            render(active?.dataset.ratingMode || 'algo');
+        });
         render('algo');
     } catch (error) {
+        document.getElementById('library-updated').textContent = 'AC数を読み込めませんでした。時間をおいて再読み込みしてください。';
         status.textContent = 'Rating履歴を読み込めませんでした。時間をおいて再読み込みしてください。';
         console.error(error);
     }

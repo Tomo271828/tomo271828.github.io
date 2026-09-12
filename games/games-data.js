@@ -74,7 +74,7 @@ window.portfolioGames = [
     },
     {
         title: "the Box",
-        image: "information/theBox/theBox_1_Square.png",
+        image: "information/theBox/theBox_Title.png",
         imageAlt: "the Box",
         detailImages: [
             "information/theBox/theBox_3.png",
@@ -192,7 +192,7 @@ window.portfolioGames = [
     },
     {
         title: "Gravity Golf",
-        image: "information/GravityGolf/GravityGolf_1_Square.png",
+        image: "information/GravityGolf/GravityGolf_Title.png",
         imageAlt: "Gravity Golf",
         detailImages: [
             "information/GravityGolf/GravityGolf_2.png",
@@ -227,7 +227,7 @@ window.portfolioGames = [
     },
     {
         title: "My1stGame",
-        image: "information/My1stGame/My1stGame_1_Square.png",
+        image: "information/My1stGame/My1stGame_Title.png",
         imageAlt: "My1stGame",
         detailImages: [
             "information/My1stGame/My1stGame_2.png",
@@ -261,7 +261,7 @@ window.portfolioGames = [
     },
     {
         title: "対称な部屋からの脱出",
-        image: "information/Symmetry/Symmetry_1_Square.png",
+        image: "information/Symmetry/Symmetry_Title.png",
         imageAlt: "対称な部屋からの脱出",
         detailImages: [
             "information/Symmetry/Symmetry_1.png",

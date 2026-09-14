@@ -38,11 +38,11 @@ window.portfolioGames = [
     },
     {
         title: "Pointer",
-        image: "information/Pointer/Pointer_1_Square.png",
+        image: "information/Pointer/Pointer_Title.png",
         imageAlt: "Pointer",
         detailImages: [
-            "information/Pointer/Pointer_2.png",
             "information/Pointer/Pointer_1.png",
+            "information/Pointer/Pointer_2.png",
         ],
         tags: ["パズル", "2D"],
         engine: "Unity",
@@ -96,6 +96,9 @@ window.portfolioGames = [
         imageAlt: "スクリーンランナー",
         detailImages: [
             "information/ScreenRunner/ScreenRunner_1.png",
+            "information/ScreenRunner/ScreenRunner_Title.png",
+            "information/ScreenRunner/ScreenRunner_Game1.png",
+            "information/ScreenRunner/ScreenRunner_Game2.png",
         ],
         tags: ["アクション", "オートスクロール", "2D"],
         engine: "Unity",

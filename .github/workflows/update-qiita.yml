@@ -1,0 +1,47 @@
+name: Update Qiita articles
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Daily 03:00 JST = previous day 18:00 UTC
+    - cron: '0 18 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: qiita-articles
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch all published Qiita articles
+        env:
+          QIITA_USER_ID: tomo0211goo
+          QIITA_TOKEN: ${{ secrets.QIITA_TOKEN }}
+        run: python scripts/update-qiita.py
+      - name: Save updated Qiita articles
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add articles/qiita-articles.json
+          if git diff --cached --quiet; then
+            echo "Qiita articles are already current."
+            exit 0
+          fi
+          git commit -m "Update Qiita articles"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep 5
+          done
+          exit 1

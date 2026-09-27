@@ -6,6 +6,8 @@
     <meta name="description" content="研究">
     <title>研究 | tomo Portfolio</title>
     <link rel="stylesheet" href="../style.css?v=20260912-home-categories">
+    <link rel="stylesheet" href="research.css?v=20260928-level-size">
+    <script src="research.js?v=20260928-undergraduate" defer></script>
 </head>
 <body class="subpage subpage--research">
     <header class="subpage__header">
@@ -14,7 +16,22 @@
     </header>
     <main class="subpage__main">
         <p class="subpage__number" aria-hidden="true">03</p>
-        <div><h1>研究</h1><p class="subpage__intro">近日更新</p></div>
+        <div class="research-content">
+            <h1>研究</h1>
+        </div>
+        <section class="research-entry" aria-labelledby="undergraduate-research-title">
+            <p class="research-level">学部</p>
+
+            <!-- 研究タイトルは、次のh2内の文字列を変更してください。 -->
+            <h2 class="research-title" id="undergraduate-research-title">GSDeformerの高速化について</h2>
+
+            <div class="research-progress-heading">
+                <label for="undergraduate-progress">進捗</label>
+                <output id="undergraduate-progress-value" for="undergraduate-progress">0%</output>
+            </div>
+            <!-- 進捗は、次のvalueを0〜100の数値で指定してください。 -->
+            <progress id="undergraduate-progress" value="0" max="100" aria-describedby="undergraduate-progress-value">0%</progress>
+        </section>
     </main>
 </body>
 </html>

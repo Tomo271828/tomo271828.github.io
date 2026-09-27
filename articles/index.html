@@ -6,15 +6,41 @@
     <meta name="description" content="記事">
     <title>Articles | tomo Portfolio</title>
     <link rel="stylesheet" href="../style.css?v=20260912-home-categories">
+    <link rel="stylesheet" href="articles.css?v=20260928-techbook-cover">
+    <script src="techbook-data.js?v=20260928-techbook" defer></script>
+    <script src="articles.js?v=20260928-techbook-cover" defer></script>
 </head>
 <body class="subpage subpage--articles">
     <header class="subpage__header">
         <a class="site-name" href="../">TOMO PORTFOLIO</a>
         <a class="back-link" href="../">← トップへ戻る</a>
     </header>
-    <main class="subpage__main">
-        <p class="subpage__number" aria-hidden="true">04</p>
-        <div><h1>記事</h1><p class="subpage__intro">近日更新</p></div>
+    <main class="articles-main">
+        <header class="articles-heading">
+            <p class="eyebrow">04 / ARTICLES</p>
+            <h1>記事</h1>
+        </header>
+        <section class="qiita-panel" aria-labelledby="qiita-title">
+            <div class="qiita-header">
+                <h2 id="qiita-title">Qiita</h2>
+                <a href="https://qiita.com/tomo0211goo" target="_blank" rel="noopener noreferrer">Qiitaプロフィール</a>
+            </div>
+            <p class="qiita-status" id="qiita-status" aria-live="polite">記事を読み込んでいます…</p>
+            <div class="qiita-scroll" tabindex="0" aria-label="Qiita記事一覧。上下にスクロールできます">
+                <ol class="qiita-list" id="qiita-list"></ol>
+            </div>
+            <noscript>記事一覧を見るにはJavaScriptを有効にしてください。</noscript>
+        </section>
+        <section class="techbook-panel" aria-labelledby="techbook-title">
+            <div class="qiita-header">
+                <h2 id="techbook-title">技術書典</h2>
+            </div>
+            <p class="qiita-status" id="techbook-status" aria-live="polite">販売情報を読み込んでいます…</p>
+            <div class="qiita-scroll" tabindex="0" aria-label="技術書典の販売情報一覧。上下にスクロールできます">
+                <ol class="qiita-list" id="techbook-list"></ol>
+            </div>
+            <noscript>販売情報を見るにはJavaScriptを有効にしてください。</noscript>
+        </section>
     </main>
 </body>
 </html>

@@ -91,7 +91,7 @@
         footer.append(salePeriod, link);
         content.append(title, articleTitle, footer);
 
-        const imageUrl = getTechBookImageUrl(item.url);
+        const imageUrl = item.image || getTechBookImageUrl(item.url);
         if (imageUrl) {
             const cover = document.createElement("img");
             cover.className = "techbook-cover";

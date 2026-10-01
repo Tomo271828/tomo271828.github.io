@@ -1,5 +1,7 @@
 # AtCoder Rating
 
+TomoLibraryのタイトル下に、mainブランチの最新100件のコミットメッセージと日時（日本時間）を新しい順で表示します。履歴はスクロールでき、メッセージからGitHubの該当コミットを開けます。`python scripts/update-library-history.py` で `library-history.json` を更新します。既存の公開ワークフローで、毎週日曜01:00・mainへのpush・手動実行時にも更新します。取得失敗時は保存済み履歴を維持します。
+
 「TomoLibrary」ではLibrary CheckerのAC済み問題数を表示します。対象ユーザーは `atcoder-config.json` の `libraryCheckerUserId` で指定します。公開APIの `/users/{name}/statistics` が返す `solved_map` の件数（`AC` と `LATEST_AC`、同じ問題は1問）を保存します。これも既存の毎週日曜01:00（日本時間）の更新処理で取得し、いずれかの履歴・AC数の取得に失敗した場合は保存済みデータを維持します。
 
 グラフの上端は現在のRating + 400を基本とし、過去最高値も収まる高さにします。「上位%」はAlgorithmの公開プロフィールから取得した割合を表示します。週次更新時にRatingと一緒に取得し、取得できない場合は「—」を表示します。

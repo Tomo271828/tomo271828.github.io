@@ -2,8 +2,19 @@
 .rating-panel { padding: clamp(16px, 3vw, 32px); }
 .library-panel { margin-top: 48px; border-top: 1px solid var(--line); }
 .library-description { margin: 20px 0; color: var(--muted); line-height: 1.8; }
-.library-checker-title { margin: 32px 0 0; font-size: clamp(1.15rem, 2vw, 1.4rem); }
-.library-panel .library-stats { margin: 16px 0 24px; padding: 0; }
+.library-checker-title { margin: 32px 0 0; font-size: clamp(1.15rem, 2vw, 1.4rem); text-align: center; }
+.library-panel .library-stats { margin: 16px 0 24px; padding: 0; align-items: center; justify-content: center; text-align: center; }
+.library-panel #library-updated { text-align: center; }
+.library-history-title { margin: 24px 0 12px; font-size: 1.1rem; }
+.library-history { max-height: 160px; overflow-y: scroll; scrollbar-gutter: stable; scrollbar-color: var(--competitive) var(--background); border: 1px solid var(--line); border-radius: 8px; }
+.library-history:focus-visible { outline: 2px solid var(--competitive); outline-offset: 3px; }
+.library-history-list { list-style: none; margin: 0; padding: 0 12px; }
+.library-history-list li { display: flex; align-items: baseline; gap: 16px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.library-history-list li:last-child { border-bottom: 0; }
+.library-history-message { display: block; flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; line-height: 1.4; text-decoration: none; }
+.library-history-message:hover { color: var(--competitive); text-decoration: underline; }
+.library-history-list time { flex-shrink: 0; margin-left: auto; color: var(--muted); font-size: .875rem; white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; }
+.library-history-status { margin: 16px 20px; color: var(--muted); line-height: 1.6; }
 .rating-header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .rating-header h2 { margin: 0; font-size: clamp(1.5rem, 3vw, 2rem); }
 .rating-header a { color: var(--competitive); }
@@ -41,6 +52,8 @@
     .rating-updated { grid-column: 1; grid-row: 3; }
 }
 @media (max-width: 720px) {
+    .library-history-list li { gap: 8px; }
+    .library-history-list time { font-size: .75rem; }
     .competitive-main { width: calc(100% - 32px); padding-top: 24px; }
     .rating-chart { overflow-x: hidden; }
     .rating-chart svg { min-width: 0; }

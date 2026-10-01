@@ -1,0 +1,36 @@
+{
+  "updatedAt": "2026-10-01T14:31:22.181698+00:00",
+  "source": "https://api.github.com/repos/Tomo271828/TomoLibrary/commits?sha=main&per_page=100",
+  "commits": [
+    {
+      "message": "反転可能セグメントツリー2種を高速化",
+      "date": "2026-10-01T14:25:40Z",
+      "url": "https://github.com/Tomo271828/TomoLibrary/commit/8d138bbcb593da39771f7a09ea1337639277ac08"
+    },
+    {
+      "message": "区間反転・動的配列対応セグメントツリーと遅延セグメントツリーを追加",
+      "date": "2026-09-30T10:17:16Z",
+      "url": "https://github.com/Tomo271828/TomoLibrary/commit/0c44695b26e6d862f85a7695ae70ffcde58b6e56"
+    },
+    {
+      "message": "セグメントツリーのテンプレ追加",
+      "date": "2026-09-29T10:17:04Z",
+      "url": "https://github.com/Tomo271828/TomoLibrary/commit/998e5ab832dcc5dcbd0b94dcfc382c904885cdb6"
+    },
+    {
+      "message": "Legacyを削除",
+      "date": "2026-09-29T06:44:54Z",
+      "url": "https://github.com/Tomo271828/TomoLibrary/commit/21cc6fc40291f961beb1ef16df5a91cc924f9c0e"
+    },
+    {
+      "message": "SlopeTrickの場所変更",
+      "date": "2026-09-27T07:04:49Z",
+      "url": "https://github.com/Tomo271828/TomoLibrary/commit/a7973121dd44ab7a7c58e16e07b2a280857b129d"
+    },
+    {
+      "message": "Initial commit",
+      "date": "2026-09-27T06:58:13Z",
+      "url": "https://github.com/Tomo271828/TomoLibrary/commit/131a3fe08eef745e7e0eb9466bd770fc67408ff7"
+    }
+  ]
+}

@@ -1,7 +1,12 @@
 {
-  "updatedAt": "2026-10-01T14:41:20.151924+00:00",
+  "updatedAt": "2026-10-03T18:51:10.232564+00:00",
   "source": "https://api.github.com/repos/Tomo271828/TomoLibrary/commits?sha=main&per_page=100",
   "commits": [
+    {
+      "message": "Range Add Range Sumのテンプレ修正",
+      "date": "2026-10-02T15:33:49Z",
+      "url": "https://github.com/Tomo271828/TomoLibrary/commit/d0357aa743874a2306b687619a81ded93820f66d"
+    },
     {
       "message": "反転可能セグメントツリー2種を高速化",
       "date": "2026-10-01T14:25:40Z",

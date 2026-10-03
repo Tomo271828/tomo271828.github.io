@@ -3,9 +3,9 @@
   "modes": {
     "algo": {
       "userId": "Tomo271828",
-      "updatedAt": "2026-10-01T14:41:15.872002+00:00",
+      "updatedAt": "2026-10-03T18:51:01.846278+00:00",
       "source": "https://atcoder.jp/users/Tomo271828/history/json?contestType=algo",
-      "topPercent": 2.43,
+      "topPercent": 2.58,
       "profileSource": "https://atcoder.jp/users/Tomo271828?contestType=algo&lang=en",
       "history": [
         {
@@ -407,12 +407,17 @@
           "date": "2026-09-06T14:50:00+09:00",
           "rating": 1760,
           "contest": "AtCoder Beginner Contest 474"
+        },
+        {
+          "date": "2026-10-03T22:40:00+09:00",
+          "rating": 1741,
+          "contest": "AtCoder Beginner Contest 478"
         }
       ]
     },
     "heuristic": {
       "userId": "Tomo271828",
-      "updatedAt": "2026-10-01T14:41:18.571025+00:00",
+      "updatedAt": "2026-10-03T18:51:04.395514+00:00",
       "source": "https://atcoder.jp/users/Tomo271828/history/json?contestType=heuristic",
       "topPercent": 74.63,
       "profileSource": "https://atcoder.jp/users/Tomo271828?contestType=heuristic&lang=en",
@@ -426,14 +431,14 @@
     }
   },
   "acCount": {
-    "count": 3033,
-    "updatedAt": "2026-10-01T14:41:19.322583+00:00",
+    "count": 3046,
+    "updatedAt": "2026-10-03T18:51:09.315283+00:00",
     "source": "https://kenkoooo.com/atcoder/atcoder-api/v3/user/ac_rank?user=Tomo271828"
   },
   "libraryChecker": {
     "userId": "Tomo271828",
     "count": 86,
-    "updatedAt": "2026-10-01T14:41:19.731035+00:00",
+    "updatedAt": "2026-10-03T18:51:09.725861+00:00",
     "source": "https://v3.api.judge.yosupo.jp/users/Tomo271828/statistics"
   }
 }

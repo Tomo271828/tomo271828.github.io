@@ -1,7 +1,27 @@
 {
-  "updatedAt": "2026-10-03T18:51:10.232564+00:00",
+  "updatedAt": "2026-10-10T19:34:53.664531+00:00",
   "source": "https://api.github.com/repos/Tomo271828/TomoLibrary/commits?sha=main&per_page=100",
   "commits": [
+    {
+      "message": "永続遅延セグメントツリー高速化",
+      "date": "2026-10-10T13:34:00Z",
+      "url": "https://github.com/Tomo271828/TomoLibrary/commit/d5cc41ac2164aa116721cae3230130653d567e34"
+    },
+    {
+      "message": "動的セグメントツリー高速化",
+      "date": "2026-10-08T08:22:20Z",
+      "url": "https://github.com/Tomo271828/TomoLibrary/commit/d918d7c4893ae4a181789953ab2ff93f1b5830d3"
+    },
+    {
+      "message": "Deque修正と二項係数ライブラリにPermutation追加",
+      "date": "2026-10-07T14:51:43Z",
+      "url": "https://github.com/Tomo271828/TomoLibrary/commit/766346a1608fe2e6cf84d6ad319c1e71074e1671"
+    },
+    {
+      "message": "AliceBob追加",
+      "date": "2026-10-04T12:24:11Z",
+      "url": "https://github.com/Tomo271828/TomoLibrary/commit/eb6bca0d9fa97f6cbfd03f6984fef64c8e4f9f4f"
+    },
     {
       "message": "Range Add Range Sumのテンプレ修正",
       "date": "2026-10-02T15:33:49Z",

@@ -1,7 +1,17 @@
 {
-  "updatedAt": "2026-10-10T19:34:53.664531+00:00",
+  "updatedAt": "2026-10-17T17:59:29.239842+00:00",
   "source": "https://api.github.com/repos/Tomo271828/TomoLibrary/commits?sha=main&per_page=100",
   "commits": [
+    {
+      "message": "セグメントツリー関係のライブラリの整理＋永続遅延セグメントツリーの高速化＋動的遅延セグメントツリーの高速化＋完全永続動的遅延セグメントツリーの実装",
+      "date": "2026-10-14T14:47:56Z",
+      "url": "https://github.com/Tomo271828/TomoLibrary/commit/5ed8fd833077405820581c1ea69bfb59f0f2ac09"
+    },
+    {
+      "message": "遅延セグメント木上の二分探索のバグ修正",
+      "date": "2026-10-12T09:08:58Z",
+      "url": "https://github.com/Tomo271828/TomoLibrary/commit/c7a47f30253bcb1447fb660512e7013668836c09"
+    },
     {
       "message": "永続遅延セグメントツリー高速化",
       "date": "2026-10-10T13:34:00Z",

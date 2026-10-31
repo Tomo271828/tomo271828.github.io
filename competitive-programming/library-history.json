@@ -1,7 +1,12 @@
 {
-  "updatedAt": "2026-10-24T18:24:15.383865+00:00",
+  "updatedAt": "2026-10-31T19:36:21.145145+00:00",
   "source": "https://api.github.com/repos/Tomo271828/TomoLibrary/commits?sha=main&per_page=100",
   "commits": [
+    {
+      "message": "最小頂点被覆・最大独立集合追加と双対セグメントツリーのテンプレ追加",
+      "date": "2026-10-29T10:27:39Z",
+      "url": "https://github.com/Tomo271828/TomoLibrary/commit/6a1b932e76de6eb82ff7a69b73a031c64140399c"
+    },
     {
       "message": "セグメントツリー関係のライブラリの整理＋永続遅延セグメントツリーの高速化＋動的遅延セグメントツリーの高速化＋完全永続動的遅延セグメントツリーの実装",
       "date": "2026-10-14T14:47:56Z",

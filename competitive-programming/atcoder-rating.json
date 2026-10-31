@@ -3,9 +3,9 @@
   "modes": {
     "algo": {
       "userId": "Tomo271828",
-      "updatedAt": "2026-10-24T18:24:10.822968+00:00",
+      "updatedAt": "2026-10-31T19:36:17.024279+00:00",
       "source": "https://atcoder.jp/users/Tomo271828/history/json?contestType=algo",
-      "topPercent": 2.64,
+      "topPercent": 2.59,
       "profileSource": "https://atcoder.jp/users/Tomo271828?contestType=algo&lang=en",
       "history": [
         {
@@ -422,14 +422,19 @@
           "date": "2026-10-17T22:40:00+09:00",
           "rating": 1735,
           "contest": "AtCoder Talent Quest 〜 今から28卒には脱出してもらいます〜予選 #2（AtCoder Beginner Contest 480）"
+        },
+        {
+          "date": "2026-10-31T22:40:00+09:00",
+          "rating": 1743,
+          "contest": "AtCoder Beginner Contest 482"
         }
       ]
     },
     "heuristic": {
       "userId": "Tomo271828",
-      "updatedAt": "2026-10-24T18:24:13.430320+00:00",
+      "updatedAt": "2026-10-31T19:36:19.740796+00:00",
       "source": "https://atcoder.jp/users/Tomo271828/history/json?contestType=heuristic",
-      "topPercent": 74.97,
+      "topPercent": 75.17,
       "profileSource": "https://atcoder.jp/users/Tomo271828?contestType=heuristic&lang=en",
       "history": [
         {
@@ -441,14 +446,14 @@
     }
   },
   "acCount": {
-    "count": 3101,
-    "updatedAt": "2026-10-24T18:24:14.443813+00:00",
+    "count": 3120,
+    "updatedAt": "2026-10-31T19:36:20.157538+00:00",
     "source": "https://kenkoooo.com/atcoder/atcoder-api/v3/user/ac_rank?user=Tomo271828"
   },
   "libraryChecker": {
     "userId": "Tomo271828",
-    "count": 86,
-    "updatedAt": "2026-10-24T18:24:14.738101+00:00",
+    "count": 87,
+    "updatedAt": "2026-10-31T19:36:20.646852+00:00",
     "source": "https://v3.api.judge.yosupo.jp/users/Tomo271828/statistics"
   }
 }

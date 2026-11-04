@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Fetch rating history and AtCoder Problems / Library Checker AC counts
+      - name: Fetch rating history and AC counts
         run: python scripts/update-atcoder.py
       - name: Fetch TomoLibrary commit history
         run: python scripts/update-library-history.py

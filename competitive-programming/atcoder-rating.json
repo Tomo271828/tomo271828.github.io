@@ -455,5 +455,17 @@
     "count": 87,
     "updatedAt": "2026-10-31T19:36:20.646852+00:00",
     "source": "https://v3.api.judge.yosupo.jp/users/Tomo271828/statistics"
+  },
+  "codeforces": {
+    "userId": "Tomo271828",
+    "count": 16,
+    "updatedAt": "2026-11-04T09:47:27.242840+00:00",
+    "source": "https://codeforces.com/api/user.status?handle=Tomo271828"
+  },
+  "yukicoder": {
+    "userId": 24153,
+    "count": 0,
+    "updatedAt": "2026-11-04T09:47:27.762678+00:00",
+    "source": "https://yukicoder.me/api/v1/user/id/24153"
   }
 }

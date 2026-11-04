@@ -6,9 +6,10 @@
     <meta name="description" content="競技プログラミング">
     <title>競技プログラミング | tomo Portfolio</title>
     <link rel="stylesheet" href="../style.css?v=20260907-2">
-    <link rel="stylesheet" href="rating.css?v=20261001-library-history-compact">
+    <link rel="stylesheet" href="rating.css?v=20261104-icpc-divider">
     <script src="rating.js?v=20260912-mobile-chart" defer></script>
     <script src="library-history.js?v=20261001-compact" defer></script>
+    <script src="ac-total.js?v=20261104-ac-order" defer></script>
 </head>
 <body class="subpage subpage--competitive">
     <header class="subpage__header">
@@ -63,6 +64,16 @@
             </dl>
             <p class="rating-updated" id="library-updated" aria-live="polite">AC数を読み込んでいます…</p>
             <noscript>AC数を見るにはJavaScriptを有効にしてください。</noscript>
+        </section>
+        <section class="rating-panel ac-total" aria-labelledby="ac-total-title">
+            <h2 id="ac-total-title">競技プログラミング 累計AC数</h2>
+            <p class="ac-total__number" id="ac-total-number" aria-live="polite">—</p>
+            <details class="ac-total__details">
+                <summary>内訳</summary>
+                <dl class="ac-total__sites" id="ac-total-sites" hidden></dl>
+                <p class="rating-updated" id="ac-total-status" aria-live="polite">AC数を読み込んでいます…</p>
+            </details>
+            <p class="rating-updated ac-total__note">※LeetCode・Project Euler・AOJ・MojaCoder・KCSは手動更新で対応<br>※ICPCのAC数はチームのものをカウント</p>
         </section>
     </main>
 </body>

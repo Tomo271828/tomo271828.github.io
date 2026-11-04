@@ -12,6 +12,14 @@ TomoLibraryのタイトル下に、mainブランチの最新100件のコミッ�
 
 手元で更新するには、プロジェクトのルートで `python scripts/update-atcoder.py` を実行します。両部門の履歴と総AC数の取得成功時のみ `atcoder-rating.json` を置き換え、失敗時は以前のデータを残します。総AC数も毎週日曜01:00（日本時間）にRatingと一緒に更新します。ページはHTTPサーバー経由で開いてください。
 
+ページ最下部の「競技プログラミング 累計AC数」は、「内訳」に表示する各サイトの解答済み問題数を合計します。AtCoder、Library Checker、Codeforces、yukicoderの件数は `atcoder-rating.json` を参照し、対象アカウントは `atcoder-config.json` で指定します。LeetCode、Project Euler、Aizu Online Judge、MojaCoder、Kagamiz Contest Systemの件数は `ac-total.js` で手動更新します。全サイトの対象ユーザーは `Tomo271828` です。MojaCoderはサービス終了後も保存した件数を表示します。
+
+Codeforcesは公式APIの `user.status` から公開のAC提出を取得し、問題ごとに重複を除きます。複数ページの取得時は2秒以上空けます。yukicoderは `Tomo271828` の数値ID `24153` を指定し、公式ユーザーAPIの `Solved` を使います。いずれも既存の更新処理で取得し、個別に取得に失敗した場合は同じアカウントの保存済み件数を使います。
+
+ICPC国内予選と模擬国内予選はチームの解答済み問題数を大会ごとに記録し、累計に加えます。
+
+対象サイトを追加するときは、AC数の自動取得を実装する前に、取得元の利用規約、公開APIの利用条件、アクセス頻度の制限を確認します。
+
 ## 自動更新の有効化
 
 1. 変更をGitHubのmainブランチへpushします。

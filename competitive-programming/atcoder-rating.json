@@ -469,8 +469,8 @@
   },
   "yukicoder": {
     "userId": 24153,
-    "count": 0,
-    "updatedAt": "2026-11-07T19:41:33.659774+00:00",
-    "source": "https://yukicoder.me/api/v1/user/id/24153"
+    "count": 3,
+    "updatedAt": "2026-11-11T01:17:46.669Z",
+    "source": "https://yukicoder.me/api/v1/solved/id/24153"
   }
 }

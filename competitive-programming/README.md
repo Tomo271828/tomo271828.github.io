@@ -14,7 +14,7 @@ TomoLibraryのタイトル下に、mainブランチの最新100件のコミッ�
 
 ページ最下部の「競技プログラミング 累計AC数」は、「内訳」に表示する各サイトの解答済み問題数を合計します。AtCoder、Library Checker、Codeforces、yukicoderの件数は `atcoder-rating.json` を参照し、対象アカウントは `atcoder-config.json` で指定します。LeetCode、Project Euler、Aizu Online Judge、MojaCoder、Kagamiz Contest Systemの件数は `ac-total.js` で手動更新します。全サイトの対象ユーザーは `Tomo271828` です。MojaCoderはサービス終了後も保存した件数を表示します。
 
-Codeforcesは公式APIの `user.status` から公開のAC提出を取得し、問題ごとに重複を除きます。複数ページの取得時は2秒以上空けます。yukicoderは `Tomo271828` の数値ID `24153` を指定し、公式ユーザーAPIの `Solved` を使います。いずれも既存の更新処理で取得し、個別に取得に失敗した場合は同じアカウントの保存済み件数を使います。
+Codeforcesは公式APIの `user.status` から公開のAC提出を取得し、問題ごとに重複を除きます。複数ページの取得時は2秒以上空けます。yukicoderは `Tomo271828` の数値ID `24153` を指定し、公式API `/api/v1/solved/id/24153` が返すAC済み問題を問題IDごとに数えます。いずれも既存の更新処理で取得し、個別に取得に失敗した場合は同じアカウントの保存済み件数を使います。
 
 ICPC国内予選と模擬国内予選はチームの解答済み問題数を大会ごとに記録し、累計に加えます。
 

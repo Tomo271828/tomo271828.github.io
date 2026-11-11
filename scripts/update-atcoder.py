@@ -129,13 +129,16 @@ def fetch_codeforces_count(handle):
 
 
 def fetch_yukicoder_count(user_id):
-    url = f"https://yukicoder.me/api/v1/user/id/{user_id}"
+    url = f"https://yukicoder.me/api/v1/solved/id/{user_id}"
     request = Request(url, headers={"User-Agent": "PortfolioRatingUpdater/1.0", "Accept": "application/json"})
     with urlopen(request, timeout=30) as response:
-        profile = json.load(response)
-    count = profile.get("Solved") if isinstance(profile, dict) else None
-    if type(count) is not int or not 0 <= count <= 2**53 - 1 or profile.get("Id") != user_id:
-        raise ValueError("Invalid yukicoder solved count")
+        problems = json.load(response)
+    if not isinstance(problems, list) or any(
+        not isinstance(problem, dict) or type(problem.get("ProblemId")) is not int
+        or problem["ProblemId"] <= 0 for problem in problems
+    ):
+        raise ValueError("Invalid yukicoder solved problem list")
+    count = len({problem["ProblemId"] for problem in problems})
     print(f"yukicoder: {count} accepted problems")
     return {"userId": user_id, "count": count, "updatedAt": datetime.now(timezone.utc).isoformat(), "source": url}
 

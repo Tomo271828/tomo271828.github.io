@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="アルゴリズム・データ構造・基本概念をランダムにひとつ。問題と学習資料のURL付きのアルゴリズムガチャ。">
+    <title>アルゴリズムガチャ</title>
+    <link rel="stylesheet" href="algorithm-gacha.css">
+    <script src="algorithm-gacha.js" defer></script>
+</head>
+<body>
+    <main class="gacha">
+        <h1>アルゴリズムガチャ</h1>
+        <button id="draw-button" class="draw-button" type="button" disabled>ガチャを引く</button>
+        <p id="result" class="result" role="status" aria-atomic="true" hidden></p>
+
+        <details class="catalog">
+            <summary>選出テーブル</summary>
+            <div class="table-scroll" role="region" aria-label="抽選候補の一覧" tabindex="0">
+                <table>
+                    <caption class="visually-hidden">アルゴリズム・データ構造・基本概念と問題・資料</caption>
+                    <thead><tr><th scope="col">テーマ</th><th scope="col">分野</th><th scope="col">出題例</th><th scope="col">資料</th></tr></thead>
+                    <tbody id="catalog-body"></tbody>
+                </table>
+            </div>
+        </details>
+        <noscript><p class="noscript">抽選には JavaScript が必要です。<a href="algorithms.md">候補一覧</a>はそのまま閲覧できます。</p></noscript>
+    </main>
+</body>
+</html>
